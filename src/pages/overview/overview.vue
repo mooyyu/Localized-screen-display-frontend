@@ -1,6 +1,6 @@
 <template>
 	<div class="overview px-1">
-		<div class="panel">
+		<div class="panel w-100 h-100">
 			<Header :title="String('信息学院实时数据展示')"></Header>
 			<div class="body row m-0">
 				<left-panel></left-panel>
@@ -41,14 +41,8 @@
 		background-repeat: no-repeat;
 		background-position: center bottom;
 		background-size: cover;
-		overflow-x: scroll;
-		overflow-y: hidden;
+		overflow: hidden;
 		position: relative;
-	}
-
-	div.panel {
-		width: 100%;
-		height: 100%;
 	}
 
 	div.body {

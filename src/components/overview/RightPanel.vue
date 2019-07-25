@@ -2,34 +2,24 @@
     <div class="rightPanel col p-0">
         <div class="top show-panel">
             <div class="chart pb-1">
-                <div class="chartTitle text-center">
-                    <span>信息XXXXXXXXXX图</span>
-                </div>
-                <div class="chartBody">
-                    <scatter-demo></scatter-demo>
-                </div>
+                <profession-overview></profession-overview>
             </div>
         </div>
         <div class="bottom">
             <div class="chart pb-1">
-                <div class="chartTitle text-center">
-                    <span>历年学生数量和取得奖项图</span>
-                </div>
-                <div class="chartBody">
-                    <stu-and-awards-over-years></stu-and-awards-over-years>
-                </div>
+                <tea-info></tea-info>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import StuAndAwardsOverYears from '../chart/overview/StuAndAwardsOverYears'
-    import ScatterDemo from '../chart/overview/ScatterDemo'
+    import professionOverview from '@components/chart/overview/ProfessionOverview'
+    import TeaInfo from '@components/overview/TeaInfo'
     export default {
         name: "RightPanel",
         components: {
-            StuAndAwardsOverYears, ScatterDemo
+            professionOverview, TeaInfo
         }
     }
 </script>
@@ -67,21 +57,7 @@
         height: 100%;
     }
 
-    div.chartTitle {
-        height: 15%;
-    }
-    
-    div.chartTitle span {
-        background-color: #13275e;
-        color: #c8f7fa;
-        font-size: 3vh;
-    }
-
-    div.chartBody {
-        height: 85%;
-    }
-
-    div.chartBody div {
+    div.chart div {
         max-height: 100%;
         min-height: 100%;
     }

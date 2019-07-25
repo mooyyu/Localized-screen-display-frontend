@@ -1,56 +1,24 @@
 <template>
     <div class="main">
-        <div class="statistic show-panel row text-center">
-            <div class="dock col h-100">
-                <p class="text-danger">54</p>
-                <small class="text-white">专业</small>
-            </div>
-            <div class="dock col h-100">
-                <p class="text-warning">123</p>
-                <small class="text-white">班级</small>
-            </div>
-            <div class="dock col h-100">
-                <p class="text-success">89</p>
-                <small class="text-white">教师</small>
-            </div>
-            <div class="dock col h-100">
-                <p class="text-info">989</p>
-                <small class="text-white">学生</small>
-            </div>
-            <div class="dock col h-100">
-                <p class="text-primary">13</p>
-                <small class="text-white">奖项</small>
-            </div>
+        <div class="statistic show-panel">
+            <college-overview></college-overview>
         </div>
-        <div class="contain show-panel row">
-            <div class="chart pb-1 col-6">
-                <div class="chartTitle text-center">
-                    <span>信息学院XXXXXXX图</span>
-                </div>
-                <div class="chartBody">
-                    <radar-demo></radar-demo>
-                </div>
-            </div>
-            <div class="chart pb-1 col-6">
-                <div class="chartTitle text-center">
-                    <span>信息学院XXXXXXX图</span>
-                </div>
-                <div class="chartBody">
-                    <polar-demo></polar-demo>
-                </div>
+        <div class="contain show-panel">
+            <div class="chart">
+                <college-trend></college-trend>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import RadarDemo from '../chart/overview/RadarDemo'
-    import PolarDemo from '../chart/overview/PolarDemo'
+    import collegeTrend from '@components/chart/overview/CollegeTrend'
+    import collegeOverview from '@components/overview/CollegeOverview'
 
     export default {
         name: 'app',
         components: {
-            RadarDemo, PolarDemo
+            collegeTrend, collegeOverview
         }
     }
 </script>
@@ -71,18 +39,6 @@
         border-image: url("../../assets/simple-border.png") 26;
     }
 
-    div.dock p {
-        font-size: 6vh;
-        line-height: 5vh;
-        font-family: "Courier New",cursive;
-        margin: 2vh 0 0 0;
-    }
-
-    div.dock small {
-        font-size: 3vh;
-        line-height: 1vh;
-    }
-
     div.contain {
         height: 80%;
         width: 100%;
@@ -101,21 +57,7 @@
         height: 100%;
     }
 
-    div.chartTitle {
-        height: 10%;
-    }
-
-    div.chartTitle span {
-        background-color: #13275e;
-        color: #c8f7fa;
-        font-size: 3vh;
-    }
-
-    div.chartBody {
-        height: 90%;
-    }
-
-    div.chartBody div {
+    div.chart div {
         max-height: 100%;
         min-height: 100%;
     }

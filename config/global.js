@@ -1,6 +1,6 @@
 import axios from 'axios'
 
 export default {
-    serverHost: "http://localhost:8216/cjb_api",
+    serverHost: "http://localhost:8216/overview_api",
     axios: axios
 }
