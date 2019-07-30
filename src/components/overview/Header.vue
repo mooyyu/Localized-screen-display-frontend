@@ -25,6 +25,7 @@
 	div.left {
 		height: 100%;
 	}
+
 	img {
 		display: block;
 		box-sizing: border-box;
@@ -35,11 +36,9 @@
 	div.header {
 		height: 10%;
 		width: 100%;
-		border-bottom: 5px solid transparent;
-		border-image: url("../../assets/top.png") 0 0 15 0;
 	}
 
-	.milky {
+	div.milky {
 		font-family:"microsoft yahei", "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;;
 		font-size: 6vh;
 		line-height: 10vh;

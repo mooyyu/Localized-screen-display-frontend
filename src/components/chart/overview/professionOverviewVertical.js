@@ -1,7 +1,7 @@
-import {mixins, Line} from "vue-chartjs";
+import {Bar, mixins} from 'vue-chartjs'
 
 export default {
-    extends: Line,
+    extends: Bar,
     mixins: [mixins.reactiveData],
     data () {
         return {
@@ -12,26 +12,27 @@ export default {
     mounted () {
         this.renderChart(this.chartData, this.options)
     },
-    created() {
+    created () {
         this.options = {
             responsive: true,
             maintainAspectRatio: false,
             title: {
                 display: true,
-                text: '历年开设专业、班级数量及招收学生人数趋势图',
+                text: '各专业的班级数量及学生人数柱状图',
                 fontSize: 20,
                 fontColor: 'rgb(255,255,255)'
             },
             scales: {
                 yAxes: [{
-                    id: 'zybjul',
+                    id: 'bjul',
                     position: 'left',
                     ticks: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        stepSize: 1
                     },
                     scaleLabel: {
                         display: true,
-                        labelString: '专业、班级数量',
+                        labelString: '班级数量',
                         fontColor: 'rgb(255,255,255)'
                     }
                 }, {
@@ -48,35 +49,21 @@ export default {
                 }]
             }
         };
-        this.global.axios.get(this.global.serverHost + '/data/collegeTrend', {
+        this.global.axios.get(this.global.serverHost + '/data/professionOverview', {
             withCredentials: true
         }).then(res => {
             this.chartData = {
-                labels: res.data.map(item => item.dqszj),
+                labels: res.data.map(item => item.zymc),
                 datasets: [
                     {
-                        label: '专业数量',
-                        yAxisID: 'zybjul',
-                        backgroundColor: 'rgba(105,227,186)',
-                        borderColor: 'rgba(105,227,186)',
-                        pointBorderWidth: 6,
-                        fill: false,
-                        data: res.data.map(item => item.zyul)
-                    }, {
                         label: '班级数量',
-                        yAxisID: 'zybjul',
-                        backgroundColor: 'rgba(164,225,47)',
-                        borderColor: 'rgba(164,225,47)',
-                        pointBorderWidth: 6,
-                        fill: false,
+                        yAxisID: 'bjul',
+                        backgroundColor: '#05CBE1',
                         data: res.data.map(item => item.bjul)
                     }, {
                         label: '学生人数',
                         yAxisID: 'xsrs',
-                        backgroundColor: 'rgba(225,108,92)',
-                        borderColor: 'rgba(225,108,92)',
-                        pointBorderWidth: 6,
-                        fill: false,
+                        backgroundColor: '#FC2525',
                         data: res.data.map(item => item.xsrs)
                     }
                 ]

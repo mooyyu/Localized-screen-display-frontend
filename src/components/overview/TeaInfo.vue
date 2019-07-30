@@ -1,5 +1,5 @@
 <template>
-    <div class="teaInfo row pt-2 pl-2 text-white">
+    <div v-if="loaded" class="teaInfo row pt-2 pl-2 text-white">
         <div class="col-3">
             <h2>优秀教师</h2>
             <img class="d-block w-100" :src="teaList[curTea].avatar" alt="avatar">

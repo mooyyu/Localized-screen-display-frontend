@@ -19,6 +19,7 @@ export default {
             title: {
                 display: true,
                 text: '挂科率最高的必修、限定选修课前6名',
+                fontSize: 20,
                 fontColor: 'rgb(255,255,255)'
             }
         };
