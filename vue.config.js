@@ -17,6 +17,9 @@ const config = {
             .set('@', resolve('src'))
             .set('@assets',resolve('src/assets'))
             .set('@components', resolve('src/components'))
+    },
+    devServer: {
+        host: 'localhost'
     }
 };
 

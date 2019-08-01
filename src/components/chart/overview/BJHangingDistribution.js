@@ -18,11 +18,12 @@ export default {
             maintainAspectRatio: false,
             title: {
                 display: true,
-                text: '各专业的班级数量及学生人数柱状图',
+                text: '各班级挂科分布图',
                 fontSize: 20,
                 fontColor: 'rgb(255,255,255)'
             },
             legend: {
+                display: false,
                 labels: {
                     fontColor: "white"
                 }
@@ -31,7 +32,6 @@ export default {
                 xAxes: [{
                     ticks: {
                         beginAtZero: true,
-                        stepSize: 1,
                         fontColor: "white"
                     }
                 }],
@@ -42,22 +42,18 @@ export default {
                 }]
             }
         };
-        this.global.axios.get(this.global.serverHost + '/data/professionOverview', {
+        this.global.axios.get(this.global.serverHost + '/data/hangingDistribution', {
+            params: {
+                type: "bjmc"
+            },
             withCredentials: true
         }).then(res => {
             this.chartData = {
-                labels: res.data.map(item => item.zymc),
+                labels: res.data.map(item => item.mc),
                 datasets: [
                     {
-                        label: '班级数量',
-                        // yAxisID: 'bjul',
-                        backgroundColor: '#05CBE1',
-                        data: res.data.map(item => item.bjul)
-                    }, {
-                        label: '学生人数',
-                        // yAxisID: 'xsrs',
-                        backgroundColor: '#FC2525',
-                        data: res.data.map(item => item.xsrs)
+                        backgroundColor: '#b490e1',
+                        data: res.data.map(item => item.rate)
                     }
                 ]
             }

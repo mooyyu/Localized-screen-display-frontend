@@ -3,8 +3,11 @@
         <ul class="list-group list-group-flush text-white text-nowrap pr-2">
             <li @click="selectChart('collegeTrend')" class="list-group-item">学院建设趋势</li>
             <li @click="selectChart('professionOverview')" class="list-group-item">专业发展情况</li>
-            <li @click="selectChart('popularElective')" class="list-group-item">最受欢迎选课</li>
-            <li @click="selectChart('hanging')" class="list-group-item">挂科率排名图</li>
+            <li @click="selectChart('popularElective')" class="list-group-item">最受欢迎选修课</li>
+            <li @click="selectChart('hanging')" class="list-group-item">课程挂科率排名图</li>
+            <li @click="selectChart('stuSourceDistribution')" class="list-group-item">生源地分布图</li>
+            <li @click="selectChart('ZYHangingDistribution')" class="list-group-item">各专业挂科分布图</li>
+            <li @click="selectChart('BJHangingDistribution')" class="list-group-item">各班级挂科分布图</li>
             <li @click="selectChart('excellentTea')" class="list-group-item">优秀教师介绍</li>
             <li @click="selectChart('excellentStu')" class="list-group-item">十大榜样表彰</li>
         </ul>

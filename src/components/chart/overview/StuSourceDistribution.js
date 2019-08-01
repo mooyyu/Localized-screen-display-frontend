@@ -1,7 +1,7 @@
-import {Doughnut, mixins} from "vue-chartjs";
+import {Pie, mixins} from "vue-chartjs";
 
 export default {
-    extends: Doughnut,
+    extends: Pie,
     mixins: [mixins.reactiveData],
     data() {
         return {
@@ -18,7 +18,7 @@ export default {
             maintainAspectRatio: false,
             title: {
                 display: true,
-                text: '挂科率最高的必修、限定选修课前6名',
+                text: '生源地分布前6名',
                 fontSize: 20,
                 fontColor: 'rgb(255,255,255)'
             },
@@ -28,20 +28,25 @@ export default {
                 }
             }
         };
-        this.global.axios.get(this.global.serverHost + '/data/hanging', {
+        this.global.axios.get(this.global.serverHost + '/data/stuSourceDistribution', {
             withCredentials: true
         }).then(res => {
+            let labels = res.data.map(item => item.stuSource).slice(0, 6)
+            let data = res.data.map(item => item.xsrs).slice(0, 6)
+            labels.push('其他')
+            data.push(eval(res.data.map(item => item.xsrs).slice(6).join('+')))
             this.chartData = {
-                labels: res.data.map(item => item.mc).slice(0, 6),
+                labels: labels,
                 datasets: [{
-                    data: res.data.map(item => item.rate).slice(0, 6),
+                    data: data,
                     backgroundColor:[
                         "rgb(255,66,56)",
                         "rgb(240,177,109)",
                         "rgb(255,239,132)",
                         "rgb(133,207,114)",
                         "rgb(100,159,207)",
-                        "rgb(202,135,235)"
+                        "rgb(202,135,235)",
+                        "rgb(165,162,166)"
                     ]
                 }]
             }

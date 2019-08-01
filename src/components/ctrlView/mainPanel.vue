@@ -13,6 +13,15 @@
             <template v-else-if="chartName === 'hanging'">
                 <hanging></hanging>
             </template>
+            <template v-else-if="chartName === 'stuSourceDistribution'">
+                <stu-source-distribution></stu-source-distribution>
+            </template>
+            <template v-else-if="chartName === 'ZYHangingDistribution'">
+                <zy-hanging-distribution></zy-hanging-distribution>
+            </template>
+            <template v-else-if="chartName === 'BJHangingDistribution'">
+                <bj-hanging-distribution></bj-hanging-distribution>
+            </template>
         </div>
     </div>
 </template>
@@ -22,11 +31,20 @@
     import ProfessionOverviewVertical from "@components/chart/overview/professionOverviewVertical"
     import PopularElective from "@components/chart/overview/PopularElective"
     import Hanging from "@components/chart/overview/Hanging"
+    import StuSourceDistribution from "@components/chart/overview/StuSourceDistribution"
+    import ZyHangingDistribution from "@components/chart/overview/ZYHangingDistribution"
+    import BjHangingDistribution from "@components/chart/overview/BJHangingDistribution"
 
     export default {
         name: "mainPanel",
         components: {
-            CollegeTrend, ProfessionOverviewVertical, PopularElective, Hanging
+            CollegeTrend,
+            ProfessionOverviewVertical,
+            PopularElective,
+            Hanging,
+            StuSourceDistribution,
+            ZyHangingDistribution,
+            BjHangingDistribution
         },
         props: {
             chartName: String

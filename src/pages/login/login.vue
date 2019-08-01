@@ -4,7 +4,7 @@
             <div class="form-group row">
                 <label for="inputId" class="text-right col-sm-3 col-form-label text-right">学号</label>
                 <div class="col-sm-9">
-                    <input v-model="loginInfo.xh" type="number" step="1" maxlength="20" onkeyup="this.value=this.value.replace(/\D/g,'')" class="form-control" id="inputId" placeholder="学号">
+                    <input v-model="loginInfo.admin" type="text" maxlength="20" class="form-control" id="inputId" placeholder="账号">
                 </div>
             </div>
             <div class="form-group row">
@@ -41,7 +41,7 @@
             return {
                 serverHost: this.global.serverHost,
                 loginInfo: {
-                    xh: '',
+                    admin: '',
                     password: '',
                     vcode: ''
                 },
@@ -53,18 +53,18 @@
         },
         methods: {
             submit() {
-                let that = this
-                this.global.axios.post(this.serverHost + '/login', {
-                    xh: this.loginInfo.xh,
-                    password: this.loginInfo.password,
-                    vcode: this.loginInfo.vcode
-                }, {
+                this.global.axios.get(this.serverHost + '/login', {
+                    params: {
+                        xh: this.loginInfo.xh,
+                        password: this.loginInfo.password,
+                        vcode: this.loginInfo.vcode
+                    },
                     withCredentials: true
-                }).then(function(res) {
+                }).then(res => {
                     if (res.data === 'success') {
                         window.location.href = './EMCenter'
                     } else {
-                        that.modalBody = res.data
+                        this.modalBody = res.data
                         $('div#loginModal').modal('show')
                     }
                 })

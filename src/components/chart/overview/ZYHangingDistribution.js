@@ -18,7 +18,7 @@ export default {
             maintainAspectRatio: false,
             title: {
                 display: true,
-                text: '最受欢迎的选修课前6名',
+                text: '各专业挂科分布图',
                 fontSize: 20,
                 fontColor: 'rgb(255,255,255)'
             },
@@ -36,20 +36,34 @@ export default {
                 }
             }
         };
-        this.global.axios.get(this.global.serverHost + '/data/popularElective', {
+        this.global.axios.get(this.global.serverHost + '/data/hangingDistribution', {
+            params: {
+                type: "zymc"
+            },
             withCredentials: true
         }).then(res => {
             this.chartData = {
-                labels: res.data.map(item => item.kcmc).slice(0, 6),
+                labels: res.data.map(item => item.mc),
                 datasets: [{
-                    data: res.data.map(item => item.xsrs).slice(0, 6),
+                    data: res.data.map(item => item.rate),
                     backgroundColor:[
-                        "rgb(255, 99, 132)",
-                        "rgb(75, 192, 192)",
+                        "rgb(255,20,8)",
+                        "rgb(192,125,44)",
                         "rgb(255, 205, 86)",
-                        "rgb(207,114,186)",
-                        "rgb(207,124,78)",
-                        "rgb(54, 162, 235)"
+                        "rgb(156,207,33)",
+                        "rgb(18,129,18)",
+                        "rgb(79,255,179)",
+                        "rgb(156,218,255)",
+                        "rgb(129,159,178)",
+                        "rgb(77,141,255)",
+                        "rgb(184,189,255)",
+                        "rgb(50,17,150)",
+                        "rgb(243,176,255)",
+                        "rgb(170,42,207)",
+                        "rgb(255,118,203)",
+                        "rgb(255,245,225)",
+                        "rgb(170,170,175)",
+                        "rgb(0,0,0)"
                     ]
                 }]
             }

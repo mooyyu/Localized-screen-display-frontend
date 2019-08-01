@@ -22,13 +22,19 @@ export default {
                 fontSize: 20,
                 fontColor: 'rgb(255,255,255)'
             },
+            legend: {
+                labels: {
+                    fontColor: "white"
+                }
+            },
             scales: {
                 yAxes: [{
                     id: 'bjul',
                     position: 'left',
                     ticks: {
                         beginAtZero: true,
-                        stepSize: 1
+                        stepSize: 1,
+                        fontColor: "white"
                     },
                     scaleLabel: {
                         display: true,
@@ -39,12 +45,18 @@ export default {
                     id: 'xsrs',
                     position: 'right',
                     ticks: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        fontColor: "white"
                     },
                     scaleLabel:{
                         display: true,
                         labelString: '学生人数',
                         fontColor: 'rgb(255,255,255)'
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontColor: "white"
                     }
                 }]
             }
