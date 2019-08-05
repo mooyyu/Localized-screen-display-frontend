@@ -2,21 +2,21 @@
     <div class="mainPanel border-bottom">
         <show-hello v-if="panel === 'showHello'"></show-hello>
         <set-param v-else-if="panel === 'setParam'"></set-param>
-        <excellent-tea v-else-if="panel === 'excellentTea'"></excellent-tea>
-        <excellent-stu v-else-if="panel === 'excellentStu'"></excellent-stu>
+        <college-info v-else-if="panel === 'collegeInfo'"></college-info>
+        <development-path v-else-if="panel === 'developmentPath'"></development-path>
     </div>
 </template>
 
 <script>
     import showHello from "@components/JAAAdmin/panel/showHello"
     import setParam from "@components/JAAAdmin/panel/setParam"
-    import excellentStu from "@components/JAAAdmin/panel/excellentStu"
-    import excellentTea from "@components/JAAAdmin/panel/excellentTea"
+    import collegeInfo from "@components/JAAAdmin/panel/collegeInfo"
+    import developmentPath from "@components/JAAAdmin/panel/developmentPath"
 
     export default {
         name: "mainPanel",
         components: {
-            showHello, setParam, excellentTea, excellentStu
+            showHello, setParam, collegeInfo, developmentPath
         },
         props: {
             panel: String

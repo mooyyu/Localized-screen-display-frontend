@@ -2,13 +2,13 @@
     <div class="message px-4">
         <div class="marquee text-white row">
             <div class="marquee_title col-2">
-                <span>学院通知</span>
+                <span>学院发展历程</span>
             </div>
             <div class="marquee_box col-10">
                 <ul class="marquee_list" :class="{marquee_top:animate}">
                     <li v-for="item in marqueeList" :key="item.time" >
-                        <span>{{item.time}}:</span>
-                        <span>{{item.content}}</span>
+                        <span>{{item.year}}年 </span>
+                        <span>{{item.info}}</span>
                     </li>
                 </ul>
             </div>
@@ -22,19 +22,16 @@
         data() {
             return {
                 animate: false,
-                marqueeList: [
-                    {
-                        time: '09/12 12:22',
-                        content: 'the first message.'
-                    }, {
-                        time: '09/12 12:24',
-                        content: 'the second message.'
-                    }
-                ]
+                marqueeList: []
             }
         },
         created: function () {
-            setInterval(this.showMarquee, 4000)
+            this.global.axios.get(this.global.serverHost + '/data/developmentPath', {
+                withCredentials: true
+            }).then(res => {
+                this.marqueeList = res.data
+                setInterval(this.showMarquee, 3000)
+            })
         },
         methods: {
             showMarquee: function () {

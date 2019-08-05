@@ -2,9 +2,9 @@
     <div class="asideBar h-100 pr-0">
         <div class="idx border-right">
             <ul class="list-group list-group-flush">
-                <li @click="selectPanel('setParam')" class="list-group-item">参数设定</li>
-                <li @click="selectPanel('excellentTea')" class="list-group-item">优秀教师</li>
-                <li @click="selectPanel('excellentStu')" class="list-group-item">十大榜样</li>
+                <li @click="selectPanel('setParam')" class="list-group-item">参数设定 <i class="fa fa-edit"></i></li>
+                <li @click="selectPanel('collegeInfo')" class="list-group-item">学院介绍 <i class="fa fa-info-circle"></i></li>
+                <li @click="selectPanel('developmentPath')" class="list-group-item">发展历程 <i class="fa fa-line-chart"></i></li>
             </ul>
         </div>
         <div class="info border w-100 text-center text-muted">

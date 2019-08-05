@@ -2,8 +2,8 @@
     <div class="nav m-0 p-0 w-100">
         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom fixed-top">
             <a @click="selectPanel('showHello')" class="navbar-brand">
-                <img src="../../assets/jmi_logo.png" width="184" height="30" class="d-inline-block align-top mr-3" alt="jmi_logo">
-                **后台管理系统
+                <img src="../../assets/jmi_logo.png" height="30" class="d-inline-block align-top mr-3" alt="jmi_logo">
+                信息学院大屏展示后台管理系统
             </a>
         </nav>
     </div>
