@@ -25,7 +25,8 @@ export default {
             legend: {
                 labels: {
                     fontColor: "white"
-                }
+                },
+                position: 'left'
             },
             scale: {
                 display: false,

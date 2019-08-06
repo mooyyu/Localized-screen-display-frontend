@@ -33,11 +33,17 @@
             }
         },
         mounted() {
-            this.global.axios.get(this.global.serverHost + '/data/collegeOverview', {
-                withCredentials: true
-            }).then(res => {
-                this.COData = res.data
-            })
+            this.getData()
+            setInterval(this.getData, 12600000)
+        },
+        methods: {
+            getData() {
+                this.global.axios.get(this.global.serverHost + '/data/collegeOverview', {
+                    withCredentials: true
+                }).then(res => {
+                    this.COData = res.data
+                })
+            }
         }
     }
 </script>

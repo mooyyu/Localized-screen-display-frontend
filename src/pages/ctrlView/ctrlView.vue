@@ -20,7 +20,7 @@
     import navBar from '@components/ctrlView/navbar'
     import asideBar from '@components/ctrlView/asideBar'
     import mainPanel from '@components/ctrlView/mainPanel'
-    import CollegeOverview from "@components/ctrlView/CollegeOverview"
+    import CollegeOverview from "@components/ctrlView/collegeOverview"
     import message from "@components/ctrlView/message"
     export default {
         name: "ctrlView",

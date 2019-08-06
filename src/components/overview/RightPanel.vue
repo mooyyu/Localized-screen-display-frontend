@@ -1,5 +1,5 @@
 <template>
-    <div class="rightPanel col p-0">
+    <div v-if="curStatus !== 0" class="rightPanel col p-0">
         <div class="top show-panel">
             <div class="chart pb-1">
                 <profession-overview></profession-overview>
@@ -7,7 +7,14 @@
         </div>
         <div class="bottom">
             <div class="chart pb-1">
-                <tea-info></tea-info>
+                <college-info></college-info>
+            </div>
+        </div>
+    </div>
+    <div v-else class="rightPanel col p-0">
+        <div class="show-panel all">
+            <div class="chart pb-1">
+                <bj-hanging-distribution></bj-hanging-distribution>
             </div>
         </div>
     </div>
@@ -15,11 +22,20 @@
 
 <script>
     import professionOverview from '@components/chart/overview/ProfessionOverview'
-    import TeaInfo from '@components/overview/TeaInfo'
+    import CollegeInfo from '@components/overview/CollegeInfo'
+    import BjHangingDistribution from "@components/chart/overview/BJHangingDistribution"
     export default {
         name: "RightPanel",
         components: {
-            professionOverview, TeaInfo
+            professionOverview, CollegeInfo, BjHangingDistribution
+        },
+        data() {
+            return {
+                curStatus: 0
+            }
+        },
+        mounted() {
+            setInterval(() => {this.curStatus = (this.curStatus + 1) % 6}, 10000)
         }
     }
 </script>
@@ -46,6 +62,15 @@
         border: 5px solid transparent;
         border-right: none;
         border-image: url("../../assets/simple-border.png") 26;
+    }
+
+    div.all {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        border: 20px solid transparent;
+        border-image: url("../../assets/border-image-1.png") 20 36;
     }
 
     div.show-panel::after {

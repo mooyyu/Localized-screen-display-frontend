@@ -22,6 +22,9 @@
             <template v-else-if="chartName === 'BJHangingDistribution'">
                 <bj-hanging-distribution></bj-hanging-distribution>
             </template>
+            <template v-else-if="chartName === 'collegeInfo'">
+                <college-info></college-info>
+            </template>
         </div>
     </div>
 </template>
@@ -35,6 +38,8 @@
     import ZyHangingDistribution from "@components/chart/overview/ZYHangingDistribution"
     import BjHangingDistribution from "@components/chart/overview/BJHangingDistribution"
 
+    import collegeInfo from "@components/ctrlView/collegeInfo"
+
     export default {
         name: "mainPanel",
         components: {
@@ -44,7 +49,8 @@
             Hanging,
             StuSourceDistribution,
             ZyHangingDistribution,
-            BjHangingDistribution
+            BjHangingDistribution,
+            collegeInfo
         },
         props: {
             chartName: String

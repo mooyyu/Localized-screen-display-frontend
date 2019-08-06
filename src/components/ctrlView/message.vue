@@ -26,14 +26,18 @@
             }
         },
         created: function () {
-            this.global.axios.get(this.global.serverHost + '/data/developmentPath', {
-                withCredentials: true
-            }).then(res => {
-                this.marqueeList = res.data
-                setInterval(this.showMarquee, 3000)
-            })
+            this.getData()
+            setInterval(this.getData, 12600000)
+            setInterval(this.showMarquee, 3000)
         },
         methods: {
+            getData() {
+                this.global.axios.get(this.global.serverHost + '/data/developmentPath', {
+                    withCredentials: true
+                }).then(res => {
+                    this.marqueeList = res.data
+                })
+            },
             showMarquee: function () {
                 this.animate = true;
                 setTimeout(()=>{
