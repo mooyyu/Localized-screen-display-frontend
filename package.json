@@ -16,7 +16,8 @@
     "jquery": "^3.4.1",
     "popper.js": "1.15.0",
     "bootstrap": "^4.3.1",
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "vuedraggable": "^2.23.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.9.0",
@@ -27,7 +28,10 @@
     "eslint-plugin-vue": "^5.0.0",
     "vue-template-compiler": "^2.6.10",
     "glob": "^7.1.4",
-    "colors-console": "^1.0.3"
+    "colors-console": "^1.0.3",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
+    "webpack": "^4.39.1"
   },
   "eslintConfig": {
     "root": true,

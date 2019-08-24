@@ -1,14 +1,14 @@
 <template>
-    <div class="overview px-1">
+    <div v-if="loaded" class="overview px-1">
         <div class="panel w-100 h-100">
-            <Header :title="String('信息学院实时数据展示')"></Header>
+            <Header :title="String('信息学院实时数据')"></Header>
             <div class="body row m-0">
-                <left-panel></left-panel>
+                <left-panel :module-list="moduleList"></left-panel>
                 <div class="centerPanel col-5">
-                    <Main></Main>
+                    <Main :module-list="moduleList"></Main>
                     <message></message>
                 </div>
-                <right-panel></right-panel>
+                <right-panel :module-list="moduleList"></right-panel>
             </div>
         </div>
     </div>
@@ -22,12 +22,22 @@
     import rightPanel from '@components/overview/RightPanel'
 
     export default {
-        name: 'overview',
+        name: 'overView',
+        props: {
+            moduleCodeList: String
+        },
         components: {
             Header, Main, message, leftPanel, rightPanel
         },
+        data() {
+            return {
+                moduleList: null,
+                loaded: false
+            }
+        },
         mounted() {
-            setInterval(window.location.reload, 3600000)
+            this.moduleList = this.global.moduleList.sort((a, b) => this.moduleCodeList.indexOf(a.id) - this.moduleCodeList.indexOf(b.id))
+            this.loaded = true
         }
     }
 </script>
@@ -38,7 +48,7 @@
     }
 
     div.overview {
-        width: 300vh;
+        width: 100vw;
         height: 100vh;
         background-image: url(../../assets/background.jpg);
         background-repeat: no-repeat;

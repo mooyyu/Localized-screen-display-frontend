@@ -1,59 +1,35 @@
 <template>
-    <div class="mainPanel p-2">
+    <div v-if="loaded" class="mainPanel p-2">
         <div class="chart">
-            <template v-if="chartName === 'collegeTrend'">
-                <college-trend></college-trend>
-            </template>
-            <template v-else-if="chartName === 'professionOverview'">
-                <profession-overview-vertical></profession-overview-vertical>
-            </template>
-            <template v-else-if="chartName === 'popularElective'">
-                <popular-elective></popular-elective>
-            </template>
-            <template v-else-if="chartName === 'hanging'">
-                <hanging></hanging>
-            </template>
-            <template v-else-if="chartName === 'stuSourceDistribution'">
-                <stu-source-distribution></stu-source-distribution>
-            </template>
-            <template v-else-if="chartName === 'ZYHangingDistribution'">
-                <zy-hanging-distribution></zy-hanging-distribution>
-            </template>
-            <template v-else-if="chartName === 'BJHangingDistribution'">
-                <bj-hanging-distribution></bj-hanging-distribution>
-            </template>
-            <template v-else-if="chartName === 'collegeInfo'">
-                <college-info></college-info>
-            </template>
+            <module :module-name="moduleList[cur].module"></module>
         </div>
     </div>
 </template>
 
 <script>
-    import CollegeTrend from "@components/chart/overview/CollegeTrend"
-    import ProfessionOverviewVertical from "@components/chart/overview/professionOverviewVertical"
-    import PopularElective from "@components/chart/overview/PopularElective"
-    import Hanging from "@components/chart/overview/Hanging"
-    import StuSourceDistribution from "@components/chart/overview/StuSourceDistribution"
-    import ZyHangingDistribution from "@components/chart/overview/ZYHangingDistribution"
-    import BjHangingDistribution from "@components/chart/overview/BJHangingDistribution"
-
-    import collegeInfo from "@components/ctrlView/collegeInfo"
+    import module from "@components/chart/module";
 
     export default {
         name: "mainPanel",
         components: {
-            CollegeTrend,
-            ProfessionOverviewVertical,
-            PopularElective,
-            Hanging,
-            StuSourceDistribution,
-            ZyHangingDistribution,
-            BjHangingDistribution,
-            collegeInfo
+            module
         },
         props: {
-            chartName: String
+            moduleList: Array
+        },
+        data() {
+            return {
+                loaded: false,
+                cur: 0
+            }
+        },
+        mounted() {
+            if (this.moduleList.length > 0) {
+                this.loaded = true;
+                setInterval(() => {
+                    this.cur = (this.cur + 1) % this.moduleList.length
+                }, 3000)
+            }
         }
     }
 </script>
@@ -61,7 +37,8 @@
 <style scoped>
     div.mainPanel {
         height: calc(100vh - 57px - 80px - 80px);
-        width: calc(100vw - 260px);
+        width: 100%;
+        /*width: calc(100vw - 260px);*/
     }
 
     div.mainPanel div.chart {

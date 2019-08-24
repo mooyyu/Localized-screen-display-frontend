@@ -33,6 +33,7 @@
 
 <script>
     import modal from '@components/bootstrap/modal'
+    import 'bootstrap/dist/js/bootstrap.min'
     import $ from 'jquery'
     export default {
         name: "login",

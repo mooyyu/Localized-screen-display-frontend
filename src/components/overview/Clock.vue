@@ -29,7 +29,7 @@
 				return fmt;
 			};
 			let that = this;
-			setInterval(function() {that.cur_time = (new Date()).Format("yyyy-MM-dd hh:mm:ss")}, 1000)
+			setInterval(function() {that.cur_time = (new Date()).Format("yyyy-MM-dd hh:mm")}, 1000)
 		}
 	}
 </script>

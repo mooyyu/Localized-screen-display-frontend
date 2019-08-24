@@ -1,38 +1,27 @@
 <template>
     <div class="leftPanel col row m-0">
         <div class="top row m-0 show-panel">
-            <div v-if="curStatus === 0" class="chart h-100 col-6 m-0 p-0">
-                <hanging></hanging>
+            <div class="chart h-100 col-6 m-0 p-0">
+                <module v-if="curStatus === 0" :module-name="moduleList[0].module"></module>
+                <module v-if="curStatus === 1" :module-name="moduleList[1].module"></module>
+                <module v-if="curStatus === 2" :module-name="moduleList[2].module"></module>
             </div>
-            <div v-else-if="curStatus === 1" class="chart h-100 col-6 m-0 p-0">
-                <popular-elective></popular-elective>
-            </div>
-            <div v-else-if="curStatus === 2" class="chart h-100 col-6 m-0 p-0">
-                <stu-source-distribution></stu-source-distribution>
-            </div>
-            <div v-if="curStatus === 2" class="chart h-100 col-6 m-0 p-0">
-                <hanging></hanging>
-            </div>
-            <div v-else-if="curStatus === 0" class="chart h-100 col-6 m-0 p-0">
-                <popular-elective></popular-elective>
-            </div>
-            <div v-else-if="curStatus === 1" class="chart h-100 col-6 m-0 p-0">
-                <stu-source-distribution></stu-source-distribution>
+            <div class="chart h-100 col-6 m-0 p-0">
+                <module v-if="curStatus === 0" :module-name="moduleList[1].module"></module>
+                <module v-if="curStatus === 1" :module-name="moduleList[2].module"></module>
+                <module v-if="curStatus === 2" :module-name="moduleList[0].module"></module>
             </div>
         </div>
         <div class="bottom show-panel">
             <div class="chart h-100">
-                <zy-hanging-distribution></zy-hanging-distribution>
+                <module :module-name="moduleList[3].module"></module>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import popularElective from '@components/chart/overview/PopularElective'
-    import Hanging from '@components/chart/overview/Hanging'
-    import ZyHangingDistribution from "@components/chart/overview/ZYHangingDistribution"
-    import StuSourceDistribution from "@components/chart/overview/StuSourceDistribution"
+    import module from "@components/chart/module";
     export default {
         name: "leftPanel",
         data() {
@@ -40,8 +29,11 @@
                 curStatus: 0
             }
         },
+        props: {
+            moduleList: Array
+        },
         components: {
-            popularElective, Hanging, ZyHangingDistribution, StuSourceDistribution
+            module
         },
         mounted() {
             setInterval(() => {this.curStatus = (this.curStatus + 1) % 3}, 10000)

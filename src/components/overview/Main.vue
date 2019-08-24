@@ -5,20 +5,23 @@
         </div>
         <div class="contain show-panel">
             <div class="chart">
-                <college-trend></college-trend>
+                <module :module-name="moduleList[4].module"></module>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import collegeTrend from '@components/chart/overview/CollegeTrend'
-    import collegeOverview from '@components/overview/CollegeOverview'
+    import module from "@components/chart/module";
+    import collegeOverview from '@components/overview/CollegeOverview';
 
     export default {
-        name: 'app',
+        name: 'Main',
         components: {
-            collegeTrend, collegeOverview
+            module, collegeOverview
+        },
+        props: {
+            moduleList: Array
         }
     }
 </script>

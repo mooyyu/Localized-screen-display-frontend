@@ -1,13 +1,13 @@
 <template>
-    <div class="ctrlView border-left border-right">
+    <div v-if="loaded" class="ctrlView border-left border-right">
         <nav-bar></nav-bar>
         <div class="body pl-0 d-flex">
-            <aside-bar></aside-bar>
+            <aside-bar v-if="isDebug"></aside-bar>
             <div class="show pr-2">
                 <div class="intro">
                     <college-overview></college-overview>
                 </div>
-                <main-panel :chart-name="selectedChart"></main-panel>
+                <main-panel :module-list="moduleList"></main-panel>
                 <div class="footer">
                     <message></message>
                 </div>
@@ -27,34 +27,19 @@
         components: {
             navBar, asideBar, mainPanel, CollegeOverview, message
         },
+        props: {
+            moduleCodeList: String
+        },
         data() {
             return {
-                selectedChart: 'collegeTrend',
-                chartsName: [
-                    'collegeTrend',
-                    'professionOverview',
-                    'popularElective',
-                    'hanging',
-                    'excellentTea',
-                    'excellentStu'
-                ]
+                isDebug: false,
+                moduleList: null,
+                loaded: false
             }
         },
         mounted() {
-            // setInterval(this.updateChart, 30000)
-        },
-        methods: {
-            selectChart(chartName) {
-                this.selectedChart = chartName
-            },
-            updateChart() {
-                for (let i = 0; i < this.chartsName.length; i++) {
-                    if (this.chartsName[i] === this.selectedChart) {
-                        this.selectedChart = this.chartsName[(i+1) % this.chartsName.length]
-                        break
-                    }
-                }
-            }
+            this.moduleList = this.global.moduleList.filter(item => this.moduleCodeList.split('-')[0].indexOf(item.id) > -1).sort((a, b) => this.moduleCodeList.indexOf(a.id) - this.moduleCodeList.indexOf(b.id))
+            this.loaded = true;
         }
     }
 </script>
@@ -62,7 +47,7 @@
 <style scoped>
     div.ctrlView {
         width: 100vw;
-        min-width: 900px;
+        min-width: 70vh;
         height: 100vh;
         overflow: hidden;
         z-index: 1;
@@ -91,7 +76,8 @@
 
     div.show {
         height: 100%;
-        width: calc(100vw - 260px);
+        width: 100%;
+        /*width: calc(100vw - 260px);*/
     }
 
     div.intro {

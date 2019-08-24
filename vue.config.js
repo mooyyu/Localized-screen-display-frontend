@@ -19,7 +19,7 @@ const config = {
             .set('@components', resolve('src/components'))
     },
     devServer: {
-        host: 'localhost'
+        host: '0.0.0.0'
     }
 };
 

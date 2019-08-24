@@ -2,37 +2,38 @@
     <div v-if="curStatus !== 0" class="rightPanel col p-0">
         <div class="top show-panel">
             <div class="chart pb-1">
-                <profession-overview></profession-overview>
+                <module :module-name="moduleList[5].module"></module>
             </div>
         </div>
         <div class="bottom">
             <div class="chart pb-1">
-                <college-info></college-info>
+                <module :module-name="moduleList[6].module"></module>
             </div>
         </div>
     </div>
     <div v-else class="rightPanel col p-0">
         <div class="show-panel all">
             <div class="chart pb-1">
-                <bj-hanging-distribution></bj-hanging-distribution>
+                <module :module-name="moduleList[7].module"></module>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import professionOverview from '@components/chart/overview/ProfessionOverview'
-    import CollegeInfo from '@components/overview/CollegeInfo'
-    import BjHangingDistribution from "@components/chart/overview/BJHangingDistribution"
+    import module from "@components/chart/module";
     export default {
         name: "RightPanel",
         components: {
-            professionOverview, CollegeInfo, BjHangingDistribution
+            module
         },
         data() {
             return {
                 curStatus: 0
             }
+        },
+        props: {
+            moduleList: Array
         },
         mounted() {
             setInterval(() => {this.curStatus = (this.curStatus + 1) % 6}, 10000)
