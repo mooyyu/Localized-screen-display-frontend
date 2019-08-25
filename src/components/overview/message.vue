@@ -1,11 +1,11 @@
 <template>
 	<div class="message px-4">
 		<div class="marquee text-white row">
-			<div class="marquee_title col-2">
-				<span>学院发展历程</span>
+			<div class="marquee_title col-2 px-0">
+				<span>学院发展</span>
 			</div>
-			<div class="marquee_box col-10">
-				<ul class="marquee_list" :class="{marquee_top:animate}">
+			<div class="marquee_box col-10 px-0">
+				<ul class="marquee_list px-0" :class="{marquee_top:animate}">
 					<li v-for="item in marqueeList" :key="item.time" >
 						<span>{{item.year}}年 </span>
 						<span>{{item.info}}</span>
@@ -60,7 +60,7 @@
 
 	.marquee_title {
 		line-height: 9vh;
-		font-size: 3vh;
+		font-size: 14px;
 		border-right: 1px solid #d8d8d8;
 	}
 
@@ -87,6 +87,9 @@
 	.marquee_list li {
 		height: 9vh;
 		line-height: 9vh;
-		font-size: 3vh;
+		font-size: 14px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 </style>

@@ -122,7 +122,7 @@
     import $ from 'jquery'
 
     export default {
-        name: "overview",
+        name: "overView",
         components: {
             modal, draggable
         },

@@ -8,23 +8,25 @@
                 <select v-model="overviewStatus.panelCode" class="custom-select" id="inputGroupSelect">
                     <option value="1">大宽屏</option>
                     <option value="2">简单轮播</option>
-                    <option value="3">Three</option>
+                    <option value="3">宽屏</option>
                 </select>
             </div>
         </nav>
-        <template v-if="overviewStatus.panelCode === '1'"><overview :overview-status="overviewStatus"></overview></template>
-        <template v-else-if="overviewStatus.panelCode === '2'"><ctrl-view :overview-status="overviewStatus"></ctrl-view></template>
+        <over-view v-if="overviewStatus.panelCode === '1'" :overview-status="overviewStatus"></over-view>
+        <ctrl-view v-else-if="overviewStatus.panelCode === '2'" :overview-status="overviewStatus"></ctrl-view>
+        <wide-screen-view v-else-if="overviewStatus.panelCode === '3'" :overview-status="overviewStatus"></wide-screen-view>
     </div>
 </template>
 
 <script>
-    import overview from "@components/bootstrap/panel/overview";
-    import ctrlView from "@components/bootstrap/panel/ctrlview";
+    import overView from "@components/bootstrap/panel/overView";
+    import ctrlView from "@components/bootstrap/panel/ctrlView";
+    import wideScreenView from "@components/bootstrap/panel/module/wideScreenView";
 
     export default {
         name: "ctrlPanel",
         components: {
-            overview, ctrlView
+            overView, ctrlView, wideScreenView
         },
         data() {
             return {
