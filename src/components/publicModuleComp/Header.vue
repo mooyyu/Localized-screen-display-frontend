@@ -5,16 +5,25 @@
                 <img src="../../assets/jmi_overview_logo.png" :height="height/3*2" class="d-block align-top mr-3" alt="jmi_logo">
             </a>
             <span :style="'font-size:'+height/2+'px;line-height:'+height+'px;'" class="milky ml-auto">{{title}}</span>
+            <Clock v-if="withClock" :height="height"></Clock>
         </nav>
     </div>
 </template>
 
 <script>
+    import Clock from "@components/publicModuleComp/Clock";
     export default {
         name: "Header",
         props: {
             height: Number,
-            title: String
+            title: String,
+            withClock: {
+                type: Boolean,
+                default: false
+            }
+        },
+        components: {
+            Clock
         }
     }
 </script>

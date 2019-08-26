@@ -408,7 +408,7 @@
             submit() {
                 let newModuleCodeList = this.list.map(item => item.id).join("");
                 this.global.axios.post(this.global.serverHost + '/backStage/setOverviewStatus', {
-                    panelCode: 3,
+                    panelCode: 1,
                     moduleCodeList: newModuleCodeList
                 }, {
                     withCredentials: true

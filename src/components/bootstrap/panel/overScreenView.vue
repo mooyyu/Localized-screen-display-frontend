@@ -122,7 +122,7 @@
     import $ from 'jquery'
 
     export default {
-        name: "overView",
+        name: "overScreenView",
         components: {
             modal, draggable
         },
@@ -157,7 +157,7 @@
             submit() {
                 let newModuleCodeList = this.list.map(item => item.id).join("");
                 this.global.axios.post(this.global.serverHost + '/backStage/setOverviewStatus', {
-                    panelCode: 1,
+                    panelCode: 3,
                     moduleCodeList: newModuleCodeList
                 }, {
                     withCredentials: true

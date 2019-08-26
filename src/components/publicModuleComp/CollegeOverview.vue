@@ -52,12 +52,6 @@
 </script>
 
 <style scoped>
-    div.collegeOverview {
-        border: 5px solid transparent;
-        border-image: url("../../assets/simple-border.png") 26;
-        box-sizing: border-box;
-    }
-
     div.dock p {
         font-size: 36px;
         line-height: 32px;

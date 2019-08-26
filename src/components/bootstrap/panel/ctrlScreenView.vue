@@ -101,7 +101,7 @@
     import $ from 'jquery'
 
     export default {
-        name: "ctrlView",
+        name: "ctrlScreenView",
         components: {
             modal, draggable
         },

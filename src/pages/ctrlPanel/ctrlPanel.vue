@@ -6,27 +6,27 @@
                     <label class="input-group-text" for="inputGroupSelect">选择模版</label>
                 </div>
                 <select v-model="overviewStatus.panelCode" class="custom-select" id="inputGroupSelect">
-                    <option value="1">大宽屏</option>
+                    <option value="1">宽屏</option>
                     <option value="2">简单轮播</option>
-                    <option value="3">宽屏</option>
+                    <option value="3">大宽屏</option>
                 </select>
             </div>
         </nav>
-        <over-view v-if="overviewStatus.panelCode === '1'" :overview-status="overviewStatus"></over-view>
-        <ctrl-view v-else-if="overviewStatus.panelCode === '2'" :overview-status="overviewStatus"></ctrl-view>
-        <wide-screen-view v-else-if="overviewStatus.panelCode === '3'" :overview-status="overviewStatus"></wide-screen-view>
+        <wide-screen-view v-if="overviewStatus.panelCode === '1'" :overview-status="overviewStatus"></wide-screen-view>
+        <ctrl-screen-view v-else-if="overviewStatus.panelCode === '2'" :overview-status="overviewStatus"></ctrl-screen-view>
+        <over-screen-view v-else-if="overviewStatus.panelCode === '3'" :overview-status="overviewStatus"></over-screen-view>
     </div>
 </template>
 
 <script>
-    import overView from "@components/bootstrap/panel/overView";
-    import ctrlView from "@components/bootstrap/panel/ctrlView";
-    import wideScreenView from "@components/bootstrap/panel/module/wideScreenView";
+    import wideScreenView from "@components/bootstrap/panel/wideScreenView";
+    import ctrlScreenView from "@components/bootstrap/panel/ctrlScreenView";
+    import overScreenView from "@components/bootstrap/panel/overScreenView";
 
     export default {
         name: "ctrlPanel",
         components: {
-            overView, ctrlView, wideScreenView
+            wideScreenView, ctrlScreenView, overScreenView
         },
         data() {
             return {

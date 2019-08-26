@@ -2,7 +2,7 @@
     <div :style="'height:'+height+'px;'" class="message px-4">
         <div class="marquee text-white row">
             <div :style="'line-height:'+height+'px;font-size:'+height/3+'px;'" class="marquee_title col-2">
-                <span>学院发展历程</span>
+                <span>发展历程</span>
             </div>
             <div :style="'line-height:'+height+'px;'" class="marquee_box col-10">
                 <ul class="marquee_list" :style="animate ? 'transition:all 0.5s;margin-top:-'+height+'px;' : ''">
@@ -82,8 +82,9 @@
         left: 0;
     }
 
-    /*.marquee_top {*/
-    /*    transition: all 0.5s;*/
-    /*    margin-top: -52px*/
-    /*}*/
+    .marquee_list li {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 </style>

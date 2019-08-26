@@ -1,17 +1,17 @@
 <template>
-    <over-view v-if="overviewStatus.panelCode === 1" :module-code-list="overviewStatus.moduleCodeList" :key="overviewStatus.moduleCodeList"></over-view>
-    <ctrl-view v-else-if="overviewStatus.panelCode === 2" :module-code-list="overviewStatus.moduleCodeList" :key="overviewStatus.moduleCodeList"></ctrl-view>
-    <wide-screen-view v-else-if="overviewStatus.panelCode === 3" :module-code-list="overviewStatus.moduleCodeList" :key="overviewStatus.moduleCodeList"></wide-screen-view>
+    <wide-screen-view v-if="overviewStatus.panelCode === 1" :module-code-list="overviewStatus.moduleCodeList" :key="overviewStatus.moduleCodeList"></wide-screen-view>
+    <ctrl-screen-view v-else-if="overviewStatus.panelCode === 2" :module-code-list="overviewStatus.moduleCodeList" :key="overviewStatus.moduleCodeList"></ctrl-screen-view>
+    <over-screen-view v-else-if="overviewStatus.panelCode === 3" :module-code-list="overviewStatus.moduleCodeList" :key="overviewStatus.moduleCodeList"></over-screen-view>
 </template>
 
 <script>
-    import ctrlView from "@components/panel/ctrlView";
-    import overView from "@components/panel/overView";
-    import wideScreenView from "@components/panel/module/wideScreenView";
+    import wideScreenView from "@components/panel/wideScreenView";
+    import ctrlScreenView from "@components/panel/ctrlScreenView";
+    import overScreenView from "@components/panel/overScreenView";
     export default {
         name: "showPanel",
         components: {
-            ctrlView, overView, wideScreenView
+            wideScreenView, ctrlScreenView, overScreenView
         },
         data() {
             return {
@@ -40,6 +40,38 @@
     }
 </script>
 
-<style scoped>
+<style>
+    div.show-panel {
+        border-radius: 20px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        overflow: hidden;
+        z-index: 1;
+        background-position: center bottom;
+        background-size: cover;
+    }
 
+    div.show-panel::after {
+        content: '';
+        position: absolute;
+        background-position: center bottom;
+        background-size: cover;
+        background-attachment: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        filter: blur(10px);
+        z-index: -1;
+        background-image: url("../../assets/background.jpg");
+    }
+
+    div.chart {
+        width: 100%;
+        height: 100%;
+    }
+
+    div.chart div {
+        max-height: 100%;
+        min-height: 100%;
+    }
 </style>
