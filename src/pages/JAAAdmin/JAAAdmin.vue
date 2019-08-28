@@ -1,5 +1,5 @@
 <template>
-    <div v-if="loginStatus" class="JAAAdmin border-left border-right">
+    <div v-if="isLogin" class="JAAAdmin border-left border-right">
         <navbar></navbar>
         <div class="body pl-0 d-flex">
             <aside-bar></aside-bar>
@@ -21,19 +21,19 @@
         data() {
             return {
                 selectedPanel: 'showHello',
-                loginStatus: true
+                isLogin: false
             }
         },
         mounted() {
-            // this.global.axios.get(this.global.serverHost + '/isLogin', {
-            //     withCredentials: true
-            // }).then(res => {
-            //     if (res.data !== 'yes') {
-            //         window.location.href = './login'
-            //     } else {
-            //         this.loginStatus = true;
-            //     }
-            // })
+            this.global.axios.get(this.global.serverHost + '/login/checkIsLogin', {
+                withCredentials: true
+            }).then(res => {
+                if (res.data !== 'yes') {
+                    window.location.href = './login'
+                } else {
+                    this.isLogin = true;
+                }
+            })
         },
         methods: {
             selectPanel(panelName) {

@@ -19,7 +19,7 @@ import axios from 'axios'
 
 export default {
     serverHost: "http://localhost:8216/overview_api",
-    // serverHost: "http://192.168.42.154:8216/overview_api",
+    // serverHost: "http://192.168.43.82:8216/overview_api",
     axios: axios,
     moduleList: [
         { name: "学院建设趋势", id: 'a', module: "CollegeTrend" },

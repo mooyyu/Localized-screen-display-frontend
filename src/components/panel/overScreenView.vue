@@ -2,7 +2,7 @@
     <div v-if="loaded" class="overScreenView px-2">
         <Header :with-clock="true" :height="parseInt('60')" title="信息学院实时数据展示"></Header>
         <div class="panel row">
-            <div class="left-panel col">
+            <div class="left-panel col col-3-5">
                 <div class="left-top-panel show-panel w-100">
                     <div class="chart">
                         <module :module-name="moduleList[cur.left].module"></module>
@@ -27,22 +27,24 @@
                     <message :height="parseInt('45')"></message>
                 </div>
             </div>
-            <div v-if="cur.right" class="right-panel col">
-                <div class="right-top-panel w-100 show-panel">
-                    <div class="chart">
-                        <module :module-name="moduleList[5].module"></module>
+            <div class="right-panel col col-3-5">
+                <template  v-if="cur.right">
+                    <div class="right-top-panel w-100 show-panel">
+                        <div class="chart">
+                            <module :module-name="moduleList[5].module"></module>
+                        </div>
                     </div>
-                </div>
-                <div class="right-bottom-panel w-100 show-panel">
-                    <module :module-name="moduleList[6].module"></module>
-                </div>
-            </div>
-            <div v-else class="right-panel col">
-                <div class="right-full-panel w-100 show-panel">
-                    <div class="chart">
-                        <module :module-name="moduleList[7].module"></module>
+                    <div class="right-bottom-panel w-100 show-panel">
+                        <module :module-name="moduleList[6].module"></module>
                     </div>
-                </div>
+                </template>
+                <template v-else>
+                    <div class="right-full-panel w-100 show-panel">
+                        <div class="chart">
+                            <module :module-name="moduleList[7].module"></module>
+                        </div>
+                    </div>
+                </template>
             </div>
         </div>
     </div>
@@ -79,7 +81,7 @@
             }, 5000);
             setInterval(() => {
                 this.cur.right = !this.cur.right
-            }, 7000)
+            }, 3000)
         }
     }
 </script>
@@ -97,6 +99,10 @@
 
         div.panel {
             height: calc(100vh - 60px);
+            div.col-3-5 {
+                flex: 0 0 29.166666%;
+                max-width: 29.166666%;
+            }
             div.left-panel {
                 div.left-top-panel {
                     position: relative;

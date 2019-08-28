@@ -20,7 +20,8 @@ const config = {
     },
     devServer: {
         host: '0.0.0.0'
-    }
+    },
+    productionSourceMap: false
 };
 
 // 获取多页面的配置数据

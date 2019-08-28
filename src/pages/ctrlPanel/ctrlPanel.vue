@@ -1,5 +1,5 @@
 <template>
-    <div v-if="loaded" class="ctrlPanel bg-light">
+    <div v-if="loaded" class="ctrlPanel mx-auto bg-light">
         <nav class="navbar navbar-expand-lg px-4 navbar-light bg-light fixed-top border-bottom">
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -39,16 +39,24 @@
             }
         },
         mounted() {
-            this.global.axios.get(this.global.serverHost + '/backStage/getOverviewStatus', {
+            this.global.axios.get(this.global.serverHost + '/login/checkIsLogin', {
                 withCredentials: true
             }).then(res => {
-                this.overviewStatus = res.data;
-                this.overviewStatus.panelCode = this.overviewStatus.panelCode.toString();
-                this.rawPanelCode = this.overviewStatus.panelCode;
-                this.loaded = true;
-            }).catch(e => {
-                // eslint-disable-next-line no-console
-                console.info(e)
+                if (res.data !== 'yes') {
+                    window.location.href = './login'
+                } else {
+                    this.global.axios.get(this.global.serverHost + '/backStage/getOverviewStatus', {
+                        withCredentials: true
+                    }).then(res => {
+                        this.overviewStatus = res.data;
+                        this.overviewStatus.panelCode = this.overviewStatus.panelCode.toString();
+                        this.rawPanelCode = this.overviewStatus.panelCode;
+                        this.loaded = true;
+                    }).catch(e => {
+                        // eslint-disable-next-line no-console
+                        console.info(e)
+                    })
+                }
             })
         }
     }
@@ -56,6 +64,7 @@
 
 <style lang="less">
     div.ctrlPanel {
+        max-width: 600px;
         nav {
             div.input-group {
                 select.custom-select {
