@@ -29,7 +29,7 @@
                 withCredentials: true
             }).then(res => {
                 if (res.data !== 'yes') {
-                    window.location.href = './login'
+                    window.location.href = './login.html'
                 } else {
                     this.isLogin = true;
                 }

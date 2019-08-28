@@ -2,12 +2,12 @@
 <template>
     <div class="hello">
         <div>
-            <a class="text-center text-dark display-4 bg-info p-5" href="./login">登录</a>
-            <a class="text-center text-dark display-4 bg-primary p-5" href="./ctrlPanel">控制</a>
+            <a class="text-center text-dark display-4 bg-info p-5" href="./login.html">登录</a>
+            <a class="text-center text-dark display-4 bg-primary p-5" href="./ctrlPanel.html">控制</a>
         </div>
         <div>
-            <a class="text-center text-dark display-4 bg-danger p-5" href="./JAAAdmin">后台</a>
-            <a class="text-center text-dark display-4 bg-warning p-5" href="./showPanel">展示</a>
+            <a class="text-center text-dark display-4 bg-danger p-5" href="./JAAAdmin.html">后台</a>
+            <a class="text-center text-dark display-4 bg-warning p-5" href="./showPanel.html">展示</a>
         </div>
     </div>
 </template>

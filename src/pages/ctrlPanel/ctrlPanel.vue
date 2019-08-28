@@ -43,7 +43,7 @@
                 withCredentials: true
             }).then(res => {
                 if (res.data !== 'yes') {
-                    window.location.href = './login'
+                    window.location.href = './login.html'
                 } else {
                     this.global.axios.get(this.global.serverHost + '/backStage/getOverviewStatus', {
                         withCredentials: true
