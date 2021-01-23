@@ -1,29 +1,6 @@
-# vue-cjb
+# 基于高校数据的本地化大屏统计展示
 
-## Project setup
-```
-yarn install
-```
+![readme-show](./readme-show.png)
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- 前后端分离开发. 前端Vue, 后端SSM. 此为前端仓库, 后端仓库在此👉[Localized-screen-display-backstage](https://github.com/mooyyu/Localized-screen-display-backstage)
+- 布局实现模块化, 在局域网内登陆管理页面可**实时**更新布局展示.
